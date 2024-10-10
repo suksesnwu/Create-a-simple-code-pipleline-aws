@@ -2,23 +2,20 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 14
     commands:
-      - echo "Installing Node.js..."
-      - echo "Installing project dependencies..."
-      - npm install
+      - echo No installation required for static site.
+  pre_build:
+    commands:
+      - echo Pre-build phase - nothing to do.
   build:
     commands:
-      - echo "Build started on `date`"
-      - echo "Building the application..."
-      - npm run build
-      - echo "Inserting breakpoint for debugging..."
-      - codebuild-breakpoint
+      - echo Build phase - nothing to do for static site.
   post_build:
     commands:
-      - echo "Build completed on `date`"
+      - echo Build completed on `date`
+
 artifacts:
   files:
-    - '**/*'
-  base-directory: build
+    - index.html
+    - style.css
+    - main.js
