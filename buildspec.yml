@@ -5,16 +5,19 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
-      - echo Installing Node.js...
+      - echo "Installing Node.js..."
+      - echo "Installing project dependencies..."
+      - npm install
   build:
     commands:
-      - echo Build started on `date`
-      - echo Building the application...
-      - npm install
+      - echo "Build started on `date`"
+      - echo "Building the application..."
       - npm run build
+      - echo "Inserting breakpoint for debugging..."
+      - codebuild-breakpoint
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo "Build completed on `date`"
 artifacts:
   files:
     - '**/*'
